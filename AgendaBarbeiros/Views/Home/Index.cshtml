@@ -3,6 +3,132 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Agenda </h1>
+    <p>Registre seus clientes abaixo</p>
+    <div class="btn-group">
+        <a href="#" class="btn btn-primary active" aria-current="page">Registrar cliente</a>
+        
+    </div>
+    <br />
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Horário</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Observação</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td> 1195264-0000</td>
+                <td>Cabelo</td>
+                <td>15:30</td>
+                <td>R$ 35,00</td>
+                <td>Corte navalhado</td>
+                <td>
+                    <a class="btn btn-primary">Editar</a>
+                    <a class="btn btn-primary">Excluir</a>
+                </td>
+
+            </tr>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td> 1195264-0000</td>
+                <td>Barba</td>
+                <td>15:30</td>
+                <td>R$ 35,00</td>
+                <td>Corte navalhado</td>
+                <td>
+                    <a class="btn btn-primary">Editar</a>
+                    <a class="btn btn-primary">Excluir</a>
+                </td>
+
+            </tr>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td> 1195264-0000</td>
+                <td>Cabelo e Barba</td>
+                <td>15:30</td>
+                <td>R$ 35,00</td>
+                <td>Corte navalhado</td>
+                <td>
+                    <a class="btn btn-primary">Editar</a>
+                    <a class="btn btn-primary">Excluir</a>
+                </td>
+
+            </tr>
+        
+        </tbody>
+    </table>
+    <style>
+        body {
+            background-color: #121212; 
+            color: #e0e0e0; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .text-center h1.display-4 {
+            color: #1db954; 
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .text-center p {
+            color: #b0b0b0;
+            font-size: 1.2rem;
+        }
+
+        .btn-primary {
+            background-color: #1db954;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+            .btn-primary:hover, .btn-primary:focus {
+                background-color: #17a74a;
+                box-shadow: 0 0 8px #1db954;
+                outline: none;
+            }
+
+        .table {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+            .table thead th {
+                border-bottom: 2px solid #333;
+                color: #ccc;
+                font-weight: 600;
+            }
+
+            .table tbody tr:hover {
+                background-color: #2a2a2a;
+                cursor: pointer;
+            }
+
+            .table tbody td, .table tbody th {
+                border-top: none;
+                color: #ddd;
+            }
+
+        a.btn {
+            margin-right: 0.3rem;
+        }
+
+        .btn-group {
+            margin-bottom: 1.5rem;
+        }
+
+    </style>
 </div>
