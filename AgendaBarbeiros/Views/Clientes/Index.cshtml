@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<AgendaBarbeiros.Models.Cliente>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Agenda";
 }
 
-<h1>Index</h1>
+<h1>Agenda @DateTime.Now.ToString("dd/MM")</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Agendar novo cliente</a>
 </p>
 <table class="table">
     <thead>
@@ -67,9 +67,7 @@
         <style>
             body {
                 background-color: #121212;
-                color: #e0e0e0;
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                margin: 30px;
+               
             }
 
             h1 {

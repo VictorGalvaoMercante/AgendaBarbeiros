@@ -51,7 +51,82 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="ClienteId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Delete" class="btn btn-danger" / style="text-decoration:none;"> |
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
+<style>
+    body {
+        background-color: #121212;
+        color: #e0e0e0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    form {
+        background-color: #1e1e1e;
+        padding: 25px 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+        color: #ddd;
+        font-size: 14px;
+    }
+
+    label.control-label {
+        margin-bottom: 6px;
+        font-weight: 600;
+        color: #ccc;
+    }
+
+    input.form-control {
+        background-color: #2a2a2a;
+        color: #ddd;
+        border: none;
+        border-radius: 6px;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        input.form-control:focus {
+            background-color: #383838;
+            box-shadow: 0 0 8px #1db954;
+            color: #fff;
+            outline: none;
+        }
+
+    .btn-primary {
+        background-color: #1db954;
+        border: none;
+        font-weight: 600;
+        font-size: 15px;
+        border-radius: 6px;
+        width: 100%;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: #17a74a;
+            box-shadow: 0 0 8px #1db954;
+            outline: none;
+        }
+
+    .text-danger {
+        color: #ff6b6b;
+        font-size: 13px;
+    }
+
+    a {
+        color: #1db954;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    h1.text-center {
+        margin-top: 20px;
+        margin-bottom: 30px;
+        font-weight: 700;
+        color: #1db954;
+    }
+</style>
