@@ -19,9 +19,10 @@ namespace AgendaBarbeiros.Controllers
         }
 
         // GET: Clientes
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Cliente.ToListAsync());
+            var clientes =  _context.Cliente.ToList();
+            return View(clientes); 
         }
 
         // GET: Clientes/Details/5

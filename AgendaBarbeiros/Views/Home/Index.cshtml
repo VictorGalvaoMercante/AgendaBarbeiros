@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<AgendaBarbeiros.Models.Cliente>
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,70 +7,12 @@
     <h1 class="display-4">Agenda </h1>
     <p>Registre seus clientes abaixo</p>
     <div class="btn-group">
-        <a class="btn btn-primary active" aria-current="page">Registrar cliente</a>
-        
+        <a class="btn btn-primary active" aria-current="page" asp-controller="Clientes" asp-action="Create">Registrar cliente</a>
+        <a class="btn btn-primary active" aria-current="page" asp-controller="Clientes" asp-action="Index">Visualizar agenda</a>
+
     </div>
-    <br />
-    <br />
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Telefone</th>
-                <th scope="col">Categoria</th>
-                <th scope="col">Horário</th>
-                <th scope="col">Preço</th>
-                <th scope="col">Observação</th>
-                <th scope="col">Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td> 1195264-0000</td>
-                <td>Cabelo</td>
-                <td>15:30</td>
-                <td>R$ 35,00</td>
-                <td>Corte navalhado</td>
-                <td>
-                    <a class="btn btn-primary">Editar</a>
-                    <a class="btn btn-primary">Excluir</a>
-                </td>
-
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td> 1195264-0000</td>
-                <td>Barba</td>
-                <td>15:30</td>
-                <td>R$ 35,00</td>
-                <td>Corte navalhado</td>
-                <td>
-                    <a class="btn btn-primary">Editar</a>
-                    <a class="btn btn-primary">Excluir</a>
-                </td>
-
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td> 1195264-0000</td>
-                <td>Cabelo e Barba</td>
-                <td>15:30</td>
-                <td>R$ 35,00</td>
-                <td>Corte navalhado</td>
-                <td>
-                    <a class="btn btn-primary">Editar</a>
-                    <a class="btn btn-primary">Excluir</a>
-                </td>
-
-            </tr>
-        
-        </tbody>
-    </table>
+   
+    
     <style>
         body {
             background-color: #121212; 
