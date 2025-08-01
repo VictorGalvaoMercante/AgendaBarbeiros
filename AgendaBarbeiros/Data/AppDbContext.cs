@@ -13,4 +13,5 @@ using AgendaBarbeiros.Models;
         }
 
         public DbSet<Cliente> Cliente { get; set; }
-    }
+        public DbSet<DiaAtendimento> DiaAtendimento { get; set; }
+}

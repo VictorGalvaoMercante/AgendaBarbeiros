@@ -9,5 +9,7 @@
         public DateTime Horario { get; set; }
         public double Preco { get; set; }
         public string Observacao { get; set; }
+        public int DiaAtendimentoId { get; set; }
+        public DiaAtendimento DiaAtendimento { get; set; }
     }
 }

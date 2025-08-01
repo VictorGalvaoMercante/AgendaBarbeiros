@@ -1,0 +1,86 @@
+﻿@model IEnumerable<AgendaBarbeiros.Models.DiaAtendimento>
+
+@{
+    ViewData["Title"] = "Agenda de Dias";
+}
+
+<style>
+    body {
+        background-color: #121212;
+        color: #e0e0e0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .container {
+        margin-top: 40px;
+    }
+
+    .title {
+        color: #1db954;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    .table {
+        background-color: #1e1e1e;
+        border-radius: 10px;
+        overflow: hidden;
+        width: 100%;
+    }
+
+        .table th, .table td {
+            color: #ddd;
+            border-top: none;
+        }
+
+        .table thead {
+            background-color: #2a2a2a;
+        }
+
+    .btn-primary {
+        background-color: #1db954;
+        border: none;
+        transition: 0.3s ease;
+        padding: 6px 12px;
+    }
+
+        .btn-primary:hover {
+            background-color: #17a74a;
+            box-shadow: 0 0 8px #1db954;
+        }
+
+    .actions {
+        display: flex;
+        gap: 10px;
+    }
+</style>
+
+<div class="container">
+    <h2 class="title">Dias de Atendimento</h2>
+
+    <a class="btn btn-primary mb-3" asp-action="Create">+ Novo Dia</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dia in Model)
+            {
+                <tr>
+                    <td>@dia.DiaDoAtendimento.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <div class="actions">
+                            <a class="btn btn-primary" asp-controller="Cliente" asp-action="Index" asp-route-diaId="@dia.DiaAtendimentoId">
+                                Ver Clientes
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
