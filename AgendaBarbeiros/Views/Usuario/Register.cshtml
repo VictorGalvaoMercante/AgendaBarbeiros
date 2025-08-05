@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Cadastre-se";
 }
 
 <div class="container-login">
@@ -9,8 +9,8 @@
         </div>
 
         <div class="login-form">
-            <h2>Cadastro</h2>
-            <p class="subtitle">Faça login para acessar sua agenda</p>
+            <h2>Agenda Barbeiros</h2>
+            <p class="subtitle">Casdastre-se para acessar sua agenda</p>
 
             <form method="post" asp-action="Login">
                 <label for="email">Email</label>
@@ -20,8 +20,8 @@
                 <input id="senha" name="senha" type="password" placeholder="Digite sua senha" required />
 
                 <div class="btn-group">
-                    <button type="submit" class="btn-primary">Entrar</button>
-                    <a asp-action="Register" asp-controller="Usuario" class="btn-secondary">Cadastre-se</a>
+                    <button type="submit" class="btn-primary">Enviar</button>
+                    
                 </div>
             </form>
         </div>
