@@ -3,12 +3,20 @@
 @{
     ViewData["Title"] = "Agenda";
 }
+@if (Context.Session.GetString("UsuarioNome") != null)
+{
+    <p>Bem-vindo, @Context.Session.GetString("UsuarioNome")</p>
+    <a asp-controller="Usuario" asp-action="Logout">Sair</a>
+}
 
-<h1>Agenda @DateTime.Now.ToString("dd/MM")</h1>
+
+<h1>Agenda</h1>
 
 <p>
     <a asp-action="Create">Agendar novo cliente</a>
 </p>
+<div class="table-responsive">
+
 <table class="table">
     <thead>
         <tr>
@@ -67,7 +75,8 @@
         <style>
             body {
                 background-color: #121212;
-               
+                margin: 0;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
 
             h1 {
@@ -96,6 +105,14 @@
                     outline: none;
                 }
 
+            /* Container responsivo para a tabela permitir scroll horizontal */
+            .table-responsive {
+                width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch; /* para smooth scroll em iOS */
+                margin-bottom: 20px;
+            }
+
             .table {
                 width: 100%;
                 border-collapse: collapse;
@@ -103,6 +120,7 @@
                 border-radius: 10px;
                 overflow: hidden;
                 box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+                min-width: 600px; /* para garantir que a tabela tenha tamanho mínimo e precise scroll */
             }
 
                 .table thead th {
@@ -111,6 +129,7 @@
                     color: #ccc;
                     font-weight: 600;
                     border-bottom: 2px solid #333;
+                    white-space: nowrap;
                 }
 
                 .table tbody tr {
@@ -127,6 +146,7 @@
                     padding: 12px 15px;
                     color: #ddd;
                     vertical-align: middle;
+                    white-space: nowrap;
                 }
 
             .btnAction {
@@ -157,8 +177,59 @@
                     color: #121212;
                     text-decoration: none;
                 }
+
+            /* RESPONSIVIDADE */
+            @@media (max-width: 768px) {
+                h1
+
+            {
+                font-size: 1.8rem;
+            }
+
+            p > a {
+                padding: 6px 14px;
+                font-size: 0.9rem;
+            }
+
+            .btnAction {
+                font-size: 13px;
+                padding: 5px 10px;
+            }
+
+            }
+
+            @@media (max-width: 576px) {
+                /* Envolva a tabela para scroll horizontal */
+                .table-responsive
+
+            {
+                margin-bottom: 15px;
+            }
+
+            .table thead th,
+            .table tbody td {
+                padding: 8px 10px;
+                font-size: 0.85rem;
+            }
+
+            .btnAction {
+                padding: 4px 8px;
+                font-size: 12px;
+                margin-right: 4px;
+            }
+
+            }
         </style>
+
+        <div class="table-responsive">
+            <table class="table">
+                <!-- O resto da tabela -->
+            </table>
+        </div>
+
+           
 
 
     </tbody>
 </table>
+</div>

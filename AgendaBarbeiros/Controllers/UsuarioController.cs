@@ -48,6 +48,41 @@ namespace AgendaBarbeiros.Controllers
             TempData["Mensagem"] = "Usuário cadastrado com sucesso!";
             return RedirectToAction("Index", "Home");
         }
+     
+
+        // POST: Login
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View("~/Views/Home/Index.cshtml");
+        }
+
+        [HttpPost]
+        public IActionResult Login(string email, string senha)
+        {
+            var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == email);
+
+            if (usuario == null)
+            {
+                ModelState.AddModelError(string.Empty, "Usuário não encontrado. Cadastre-se para continuar.");
+                return View("~/Views/Home/Index.cshtml"); // especifica o caminho absoluto da view
+            }
+
+            if (!BCrypt.Net.BCrypt.Verify(senha, usuario.SenhaHash))
+            {
+                ModelState.AddModelError(string.Empty, "Senha incorreta.");
+                return View("~/Views/Home/Index.cshtml");
+            }
+
+            // Login bem sucedido
+            return RedirectToAction("Index", "Clientes");
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear(); // limpa tudo
+            return RedirectToAction("Login");
+        }
 
     }
 }
