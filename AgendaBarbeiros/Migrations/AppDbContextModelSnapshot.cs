@@ -33,9 +33,6 @@ namespace AgendaBarbeiros.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DiaAtendimentoId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Horario")
                         .HasColumnType("datetime2");
 
@@ -56,41 +53,32 @@ namespace AgendaBarbeiros.Migrations
 
                     b.HasKey("ClienteId");
 
-                    b.HasIndex("DiaAtendimentoId");
-
                     b.ToTable("Cliente");
                 });
 
-            modelBuilder.Entity("AgendaBarbeiros.Models.DiaAtendimento", b =>
+            modelBuilder.Entity("AgendaBarbeiros.Models.Usuario", b =>
                 {
-                    b.Property<int>("DiaAtendimentoId")
+                    b.Property<int>("UsuarioId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DiaAtendimentoId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UsuarioId"));
 
-                    b.Property<DateTime>("DiaDoAtendimento")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("DiaAtendimentoId");
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("DiaAtendimento");
-                });
+                    b.Property<string>("SenhaHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-            modelBuilder.Entity("AgendaBarbeiros.Models.Cliente", b =>
-                {
-                    b.HasOne("AgendaBarbeiros.Models.DiaAtendimento", "DiaAtendimento")
-                        .WithMany("Clientes")
-                        .HasForeignKey("DiaAtendimentoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasKey("UsuarioId");
 
-                    b.Navigation("DiaAtendimento");
-                });
-
-            modelBuilder.Entity("AgendaBarbeiros.Models.DiaAtendimento", b =>
-                {
-                    b.Navigation("Clientes");
+                    b.ToTable("Usuarios");
                 });
 #pragma warning restore 612, 618
         }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AgendaBarbeiros.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class Usuario : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -28,6 +28,21 @@ namespace AgendaBarbeiros.Migrations
                 {
                     table.PrimaryKey("PK_Cliente", x => x.ClienteId);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Usuarios",
+                columns: table => new
+                {
+                    UsuarioId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SenhaHash = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuarios", x => x.UsuarioId);
+                });
         }
 
         /// <inheritdoc />
@@ -35,6 +50,9 @@ namespace AgendaBarbeiros.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Cliente");
+
+            migrationBuilder.DropTable(
+                name: "Usuarios");
         }
     }
 }

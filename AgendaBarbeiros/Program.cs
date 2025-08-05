@@ -4,10 +4,13 @@ using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
  options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddSession();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+app.UseSession();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

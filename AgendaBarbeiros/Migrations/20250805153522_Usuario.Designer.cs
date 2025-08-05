@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AgendaBarbeiros.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250731164546_Initial")]
-    partial class Initial
+    [Migration("20250805153522_Usuario")]
+    partial class Usuario
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,6 +57,31 @@ namespace AgendaBarbeiros.Migrations
                     b.HasKey("ClienteId");
 
                     b.ToTable("Cliente");
+                });
+
+            modelBuilder.Entity("AgendaBarbeiros.Models.Usuario", b =>
+                {
+                    b.Property<int>("UsuarioId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UsuarioId"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenhaHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UsuarioId");
+
+                    b.ToTable("Usuarios");
                 });
 #pragma warning restore 612, 618
         }
