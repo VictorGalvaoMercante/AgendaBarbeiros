@@ -1,4 +1,5 @@
-﻿@{
+﻿@model AgendaBarbeiros.Models;
+@{
     ViewData["Title"] = "Cadastre-se";
 }
 
@@ -12,18 +13,29 @@
             <h2>Agenda Barbeiros</h2>
             <p class="subtitle">Casdastre-se para acessar sua agenda</p>
 
-            <form method="post" asp-action="Login">
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="Digite seu email" required />
+            <form asp-controller="Usuario" asp-action="Register" method="post">
+                <label asp-for="Nome"></label>
+                <input asp-for="Nome" class="form-control" placeholder="Digite seu nome" required />
 
-                <label for="senha">Senha</label>
-                <input id="senha" name="senha" type="password" placeholder="Digite sua senha" required />
+                <label asp-for="Email"></label>
+                <input asp-for="Email" type="email" class="form-control" placeholder="Digite seu email" required />
+
+                <label asp-for="Senha"></label>
+                <input asp-for="Senha" type="password" class="form-control" placeholder="Digite sua senha" required />
+
+                <label asp-for="ConfirmacaoSenha"></label>
+                <input asp-for="ConfirmacaoSenha" type="password" class="form-control" placeholder="Confirme sua senha" required />
+
+                <div asp-validation-summary="All" class="text-danger"></div>
 
                 <div class="btn-group">
-                    <button type="submit" class="btn-primary">Enviar</button>
-                    
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
                 </div>
             </form>
+
+            <partial name="_ValidationScriptsPartial" />
+
+
         </div>
     </div>
 </div>
@@ -110,7 +122,8 @@
     }
 
     input[type="email"],
-    input[type="password"] {
+    input[type="password"],
+    input[type="nome"] {
         background-color: #2a2a2a;
         border: none;
         border-radius: 8px;
@@ -123,7 +136,8 @@
     }
 
         input[type="email"]:focus,
-        input[type="password"]:focus {
+        input[type="password"]:focus,
+        input[type="nome"]:focus{
             outline: none;
             background-color: #383838;
             box-shadow: 0 0 8px #1db954;

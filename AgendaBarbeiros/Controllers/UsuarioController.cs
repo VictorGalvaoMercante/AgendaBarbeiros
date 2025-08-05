@@ -1,8 +1,5 @@
 ﻿using AgendaBarbeiros.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.Scripting;
-using BCrypt.Net;
-
 
 namespace AgendaBarbeiros.Controllers
 {
@@ -20,34 +17,37 @@ namespace AgendaBarbeiros.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public IActionResult Register(Usuario usuario)
         {
+            if (!ModelState.IsValid)
+                return View(usuario);
+
             if (usuario.Senha != usuario.ConfirmacaoSenha)
             {
                 ModelState.AddModelError("ConfirmacaoSenha", "As senhas não coincidem.");
                 return View(usuario);
             }
 
-            // Verifica se já existe um usuário com o mesmo email
-            var existe = _context.Usuarios.FirstOrDefault(u => u.Email == usuario.Email);
-            if (existe != null)
+            usuario.SenhaHash = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
+            usuario.Senha = null;
+            usuario.ConfirmacaoSenha = null;
+
+            try
             {
-                ModelState.AddModelError("Email", "Já existe um usuário com este e-mail.");
+                _context.Usuarios.Add(usuario);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao salvar usuário: {ex.Message}");
+                ModelState.AddModelError("", "Erro ao salvar o usuário, tente novamente.");
                 return View(usuario);
             }
 
-            // Criptografar a senha
-            usuario.Senha = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
-            usuario.ConfirmacaoSenha = null; // não precisa salvar no banco
-
-            _context.Usuarios.Add(usuario);
-            _context.SaveChanges();
-
+            TempData["Mensagem"] = "Usuário cadastrado com sucesso!";
             return RedirectToAction("Index", "Home");
         }
-
 
     }
 }

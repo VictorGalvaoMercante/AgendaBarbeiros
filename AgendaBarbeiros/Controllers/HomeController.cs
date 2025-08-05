@@ -2,7 +2,8 @@ using AgendaBarbeiros.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Scripting;
 using Microsoft.EntityFrameworkCore;
- using System.Diagnostics;
+using System.Diagnostics;
+using BCrypt.Net;
 
 
 namespace AgendaBarbeiros.Controllers
@@ -14,6 +15,11 @@ namespace AgendaBarbeiros.Controllers
         public HomeController(AppDbContext context)
         {
             _context = context;
+        }
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View();
         }
 
         [HttpPost]
